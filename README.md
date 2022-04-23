@@ -29,6 +29,29 @@ Customize each operator indivually by adding new info in `edit.json`. You can fi
     "skills": [1, 0]
 }
 ```
+## What works in game
+- Can play all main stories
+- Can play all Side Stories and Intermezzis currently available in game
+- Can play all anniliations
+- Can play supplies stages that are opened on the particular day you are playing.
+- Selecting skills when forming squads
+- Editing squad formations
+
+## What probably doesn't work in game
+- Setting default operators skills
+- Leveling up operators or skills
+- Bringing support unit from friends
+- Any base related stuffs
+- Any profile related stuffs
+- Any gacha related stuffs
+- Any contengency contract related stuffs
+- Any resource related stuffs (sanity, lmd, originium)
+- Any store related stuffs
+
++Many other that i probably forgot to mention
+
+
+
 
 ## TODO
 
