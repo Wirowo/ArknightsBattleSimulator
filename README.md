@@ -4,7 +4,12 @@
 ____________
 
 # ArknightsBattleSimulator
+_Tired of losing santiy or practice ticket when trying out a stage especially in CM mode? Now you can play stages without losing anything!_
+
 Simulate Arknights stages without costing sanity (works with guest account)
+
+Check `Features.md` to see what you can do with this.
+
 
 ## How To
 
@@ -14,8 +19,11 @@ Simulate Arknights stages without costing sanity (works with guest account)
 4. Run `start.bat` in the cloned folder.
 5. Open Arknights.
 
-Customize each operator indivually by adding new info in `edit.json`. You can find <operator_key_name> from [here](https://raw.githubusercontent.com/Kengxxiao/ArknightsGameData/master/en_US/gamedata/excel/character_table.json). By default, all characters will have max level, max potentials, max mastery.
+## Customizing indivual operators level, potentials, skill ranks and others
+Customize each operator indivually by adding new info in `customUnitInfo` key in `edit.json`. You can find <operator_key_name> from [here](https://raw.githubusercontent.com/Kengxxiao/ArknightsGameData/master/en_US/gamedata/excel/character_table.json). By default, all characters will have max level, max potentials, max mastery.
 
+- `favorPoint` - Trust points (25570 is 200% Trust) [link to exact point to %](https://gamepress.gg/arknights/core-gameplay/arknights-guide-operator-trust)
+- `mainSkillLvl` - Skill Rank (Put mastery at 0 if this is lower than 7)
 - `potentialRank` - 0-5
 - `evolvePhase` - 0 - E0, 1 - E1, 2 - E2
 - `skills` - Mastery level for each skill starting from S1.
@@ -23,36 +31,65 @@ Customize each operator indivually by adding new info in `edit.json`. You can fi
 ### Format
 ```
 "<operator_key_name>": {
+    "favorPoint": 25570,
+    "mainSkillLvl": 7,
     "potentialRank": 2,
     "level": 50, 
     "evolvePhase": 1,
     "skills": [1, 0]
 }
 ```
-## What works in game
-- Can play all main stories
-- Can play all Side Stories and Intermezzis currently available in game
-- Can play all anniliations
-- Can play supplies stages that are opened on the particular day you are playing.
-- Selecting skills when forming squads
-- Editing squad formations
 
-## What probably doesn't work in game
-- Setting default operators skills
-- Leveling up operators or skills
-- Bringing support unit from friends
-- Any base related stuffs
-- Any profile related stuffs
-- Any gacha related stuffs
-- Any contengency contract related stuffs
-- Any resource related stuffs (sanity, lmd, originium)
-- Any store related stuffs
+## Customizing support unit
+Customize the support unit list by changing the unit info in `assitList` key in `edit.json`. All characters info can be found [here](https://raw.githubusercontent.com/Kengxxiao/ArknightsGameData/master/en_US/gamedata/excel/character_table.json).
 
-+Many other that i probably forgot to mention
+- `charId` - key of the character
+- `skinId` - skinId of the character (Just put `charId` + `#1`)
+- `skills` - All skills of an operator with their respective mastery level.
+- Other keys are same as editing a new character as above.
 
 
-
+### Format
+```
+{
+    "charId": "char_350_surtr",
+    "skinId": "char_350_surtr#1",
+    "skills": [
+        {
+            "skillId": "skchr_surtr_1",
+            "unlock": 1,
+            "state": 0,
+            "specializeLevel": 3,
+            "completeUpgradeTime": -1
+        },
+        {
+            "skillId": "skchr_surtr_2",
+            "unlock": 1,
+            "state": 0,
+            "specializeLevel": 3,
+            "completeUpgradeTime": -1
+        },
+        {
+            "skillId": "skchr_surtr_3",
+            "unlock": 1,
+            "state": 0,
+            "specializeLevel": 3,
+            "completeUpgradeTime": -1
+        }
+    ],
+    "mainSkillLvl": 7,
+    "skillIndex": 2,
+    "evolvePhase": 2,
+    "favorPoint": 25570,
+    "potentialRank": 5,
+    "level": 80,
+    "crisisRecord": {},
+    "currentEquip": null,
+    "equip": {}
+}
+```
 
 ## TODO
-
 - [ ] Add a UI for easy editing
+- [ ] Include modules stuffs
+

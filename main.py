@@ -113,6 +113,10 @@ def syncData():
         cnt += 1
         
     #Tamper Operators
+
+    with open("edit.json") as f:
+        edit_json = json.load(f)
+
     cnt = 0
 
     operatorKeys = list(character_table.keys())
@@ -122,17 +126,27 @@ def syncData():
             continue
 
         # Add all operators
+        if edit_json["level"] == -1:
+            level = character_table[i]["phases"][edit_json["evolvePhase"]]["maxLevel"]
+        else:
+            level = edit_json["level"]
+
+        if edit_json["evolvePhase"] == -1:
+            evolvePhase = len(character_table[i]["phases"]) - 1
+        else:
+            evolvePhase = edit_json["evolvePhase"]
+
         myCharList[int(cntInstId)] = {
             "instId": int(cntInstId),
             "charId": operatorKeys[cnt],
-            "favorPoint": 12312312,
-            "potentialRank": 5,
-            "mainSkillLvl": 7,
+            "favorPoint": edit_json["favorPoint"],
+            "potentialRank": edit_json["potentialRank"],
+            "mainSkillLvl": edit_json["mainSkillLvl"],
             "skin": str(operatorKeys[cnt]) + "#1",
-            "level": character_table[i]["phases"][len(character_table[i]["phases"])-1]["maxLevel"],
+            "level": level,
             "exp": 0,
-            "evolvePhase": len(character_table[i]["phases"]) - 1,
-            "defaultSkillIndex": len(character_table[i]["skills"]) - 1,
+            "evolvePhase": evolvePhase,
+            "defaultSkillIndex": 0,
             "gainTime": 1591254258,
             "skills": []
         }
@@ -157,7 +171,7 @@ def syncData():
 
             # M3
             if len(skill["levelUpCostCond"]) > 0:
-                myCharList[int(cntInstId)]["skills"][index]["specializeLevel"] = 3
+                myCharList[int(cntInstId)]["skills"][index]["specializeLevel"] = edit_json["skillsSpecializeLevel"]
 
         # Dexnav
         playerData["user"]["dexNav"]["character"][operatorKeys[cnt]] = {
@@ -165,8 +179,7 @@ def syncData():
             "count": 6
         }
 
-        with open("edit.json") as f:
-            editList = json.load(f)
+        editList = edit_json["customUnitInfo"]
 
         for char in editList:
             if operatorKeys[cnt] == char:
@@ -231,6 +244,7 @@ def syncData():
     playerData["user"]["status"]["lastOnlineTs"] = ts
     playerData["ts"] = ts
 
+    playerData["user"]["status"]["ap"] = 5000
     playerData["user"]["status"]["diamondShard"] = 5000
     playerData["user"]["status"]["payDiamond"] = 500
     playerData["user"]["status"]["nickName"] = "Yostar"
@@ -238,8 +252,8 @@ def syncData():
     playerData["user"]["status"]["level"] = 200
     playerData["user"]["status"]["exp"] = 0
     playerData["user"]["status"]["resume"] = "What you doing"
-    playerData["user"]["status"]["secretary"] = "char_113_cqbw"
-    playerData["user"]["status"]["secretarySkinId"] = "char_113_cqbw#2"
+    # playerData["user"]["status"]["secretary"] = "char_113_cqbw"
+    # playerData["user"]["status"]["secretarySkinId"] = "char_113_cqbw#2"
     playerData["user"]["status"]["uid"] = "123456789"
 
     playerData["user"]["checkIn"]["canCheckIn"] = 0
@@ -404,6 +418,20 @@ def battleFinish():
     return data
 
 
+@app.route('/quest/saveBattleReplay', methods=['POST'])
+def saveBattleReplay():
+    data = request.data
+    data = {
+        "result": 0,
+        "playerDataDelta": {
+            "modified": {},
+            "deleted": {}
+        }
+    }
+
+    return data
+
+
 @app.route('/campaignV2/battleStart', methods=['POST'])
 def anniBattleStart():
     data = request.data
@@ -424,6 +452,45 @@ def anniBattleFinish():
     data = request.data
     data = {
         "result": 0,
+        "playerDataDelta": {
+            "modified": {},
+            "deleted": {}
+        }
+    }
+
+    return data
+
+
+@app.route('/quest/getAssistList', methods=['POST'])
+def getAssistList():
+    data = request.data
+    with open("edit.json") as f:
+        assistList = json.load(f)
+
+    data = {
+        "allowAskTs": int(time()),
+        "assistList": [
+            {
+                "uid": "88888888",
+                "aliasName": "",
+                "nickName": "Yostar",
+                "nickNumber": "8888",
+                "level": 110,
+                "avatarId": "0",
+                "avatar": {
+                    "type": "ASSISTANT",
+                    "id": "char_421_crow#1"
+                },
+                "lastOnlineTime": int(time()),
+                "assistCharList": [
+                    assistList
+                ],
+                "powerScore": 500,
+                "isFriend": True,
+                "canRequestFriend": False,
+                "assistSlotIndex": 0
+            }
+        ],
         "playerDataDelta": {
             "modified": {},
             "deleted": {}
