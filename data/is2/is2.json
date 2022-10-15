@@ -1,0 +1,577 @@
+{
+    "playerDataDelta": {
+        "modified": {
+            "rlv2": {
+                "outer": {
+                    "rogue_1": {
+                        "record": {
+                            "last": 1665271379,
+                            "modeCnt": {},
+                            "endingCnt": {},
+                            "stageCnt": {},
+                            "bandCnt": {}
+                        }
+                    }
+                },
+                "current": {
+                    "player": {
+                        "state": "WAIT_MOVE",
+                        "property": {
+                            "exp": 0,
+                            "level": 1,
+                            "hp": 9,
+                            "gold": 18,
+                            "capacity": 7,
+                            "population": {
+                                "cost": 0,
+                                "max": 6
+                            },
+                            "conPerfectBattle": 0
+                        },
+                        "cursor": {
+                            "zone": 1,
+                            "position": null
+                        },
+                        "trace": [],
+                        "pending": [],
+                        "status": {
+                            "bankPut": 0
+                        },
+                        "toEnding": "ro_ending_1",
+                        "chgEnding": false
+                    },
+                    "map": {
+                        "zones": {
+                            "1": {
+                                "id": "zone_1",
+                                "index": 1,
+                                "nodes": {
+                                    "0": {
+                                        "index": "0",
+                                        "pos": {
+                                            "x": 0,
+                                            "y": 0
+                                        },
+                                        "next": [
+                                            {
+                                                "x": 1,
+                                                "y": 0
+                                            },
+                                            {
+                                                "x": 1,
+                                                "y": 1
+                                            },
+                                            {
+                                                "x": 1,
+                                                "y": 2
+                                            }
+                                        ],
+                                        "type": 32
+                                    },
+                                    "100": {
+                                        "index": "100",
+                                        "pos": {
+                                            "x": 1,
+                                            "y": 0
+                                        },
+                                        "next": [
+                                            {
+                                                "x": 2,
+                                                "y": 0
+                                            },
+                                            {
+                                                "x": 2,
+                                                "y": 1
+                                            },
+                                            {
+                                                "x": 2,
+                                                "y": 2
+                                            }
+                                        ],
+                                        "type": 32
+                                    },
+                                    "101": {
+                                        "index": "101",
+                                        "pos": {
+                                            "x": 1,
+                                            "y": 1
+                                        },
+                                        "next": [
+                                            {
+                                                "x": 2,
+                                                "y": 0
+                                            },
+                                            {
+                                                "x": 2,
+                                                "y": 1
+                                            },
+                                            {
+                                                "x": 2,
+                                                "y": 2
+                                            }
+                                        ],
+                                        "type": 32
+                                    },
+                                    "102": {
+                                        "index": "102",
+                                        "pos": {
+                                            "x": 1,
+                                            "y": 2
+                                        },
+                                        "next": [
+                                            {
+                                                "x": 2,
+                                                "y": 0
+                                            },
+                                            {
+                                                "x": 2,
+                                                "y": 1
+                                            },
+                                            {
+                                                "x": 2,
+                                                "y": 2
+                                            }
+                                        ],
+                                        "type": 32
+                                    },
+                                    "200": {
+                                        "index": "200",
+                                        "pos": {
+                                            "x": 2,
+                                            "y": 0
+                                        },
+                                        "next": [
+                                            {
+                                                "x": 3,
+                                                "y": 0
+                                            },
+                                            {
+                                                "x": 3,
+                                                "y": 1
+                                            },
+                                            {
+                                                "x": 3,
+                                                "y": 2
+                                            }
+                                        ],
+                                        "type": 32
+                                    },
+                                    "201": {
+                                        "index": "201",
+                                        "pos": {
+                                            "x": 2,
+                                            "y": 1
+                                        },
+                                        "next": [
+                                            {
+                                                "x": 3,
+                                                "y": 0
+                                            },
+                                            {
+                                                "x": 3,
+                                                "y": 1
+                                            },
+                                            {
+                                                "x": 3,
+                                                "y": 2
+                                            }
+                                        ],
+                                        "type": 32
+                                    },
+                                    "202": {
+                                        "index": "202",
+                                        "pos": {
+                                            "x": 2,
+                                            "y": 2
+                                        },
+                                        "next": [
+                                            {
+                                                "x": 3,
+                                                "y": 0
+                                            },
+                                            {
+                                                "x": 3,
+                                                "y": 1
+                                            },
+                                            {
+                                                "x": 3,
+                                                "y": 2
+                                            }
+                                        ],
+                                        "type": 32
+                                    },
+                                    "300": {
+                                        "index": "300",
+                                        "pos": {
+                                            "x": 3,
+                                            "y": 0
+                                        },
+                                        "next": [
+                                            {
+                                                "x": 4,
+                                                "y": 0
+                                            }
+                                        ],
+                                        "type": 32
+                                    },
+                                    "301": {
+                                        "index": "301",
+                                        "pos": {
+                                            "x": 3,
+                                            "y": 1
+                                        },
+                                        "next": [
+                                            {
+                                                "x": 4,
+                                                "y": 0
+                                            }
+                                        ],
+                                        "type": 32
+                                    },
+                                    "302": {
+                                        "index": "302",
+                                        "pos": {
+                                            "x": 3,
+                                            "y": 2
+                                        },
+                                        "next": [
+                                            {
+                                                "x": 4,
+                                                "y": 0
+                                            }
+                                        ],
+                                        "type": 32
+                                    },
+                                    "400": {
+                                        "index": "400",
+                                        "pos": {
+                                            "x": 4,
+                                            "y": 0
+                                        },
+                                        "next": [],
+                                        "type": 32,
+                                        "zone_end": true
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "troop": {
+                        "chars": {
+                            "1": {
+                                "instId": 1,
+                                "charId": "char_293_thorns",
+                                "type": "NORMAL",
+                                "favorPoint": 25570,
+                                "potentialRank": 5,
+                                "mainSkillLvl": 7,
+                                "skin": "char_293_thorns@it#1",
+                                "level": 90,
+                                "exp": 0,
+                                "evolvePhase": 2,
+                                "defaultSkillIndex": 0,
+                                "skills": [
+                                    {
+                                        "skillId": "skcom_atk_up[3]",
+                                        "unlock": 1,
+                                        "state": 0,
+                                        "specializeLevel": 3,
+                                        "completeUpgradeTime": -1
+                                    },
+                                    {
+                                        "skillId": "skchr_thorns_2",
+                                        "unlock": 1,
+                                        "state": 0,
+                                        "specializeLevel": 3,
+                                        "completeUpgradeTime": -1
+                                    },
+                                    {
+                                        "skillId": "skchr_thorns_3",
+                                        "unlock": 1,
+                                        "state": 0,
+                                        "specializeLevel": 3,
+                                        "completeUpgradeTime": -1
+                                    }
+                                ],
+                                "currentEquip": null,
+                                "equip": {}
+                            },
+                            "2": {
+                                "instId": 2,
+                                "charId": "char_206_gnosis",
+                                "type": "NORMAL",
+                                "favorPoint": 25570,
+                                "potentialRank": 5,
+                                "mainSkillLvl": 7,
+                                "skin": "char_206_gnosis#2",
+                                "level": 90,
+                                "exp": 0,
+                                "evolvePhase": 2,
+                                "defaultSkillIndex": 0,
+                                "skills": [
+                                    {
+                                        "skillId": "skchr_gnosis_1",
+                                        "unlock": 1,
+                                        "state": 0,
+                                        "specializeLevel": 3,
+                                        "completeUpgradeTime": -1
+                                    },
+                                    {
+                                        "skillId": "skchr_gnosis_2",
+                                        "unlock": 1,
+                                        "state": 0,
+                                        "specializeLevel": 3,
+                                        "completeUpgradeTime": -1
+                                    },
+                                    {
+                                        "skillId": "skchr_gnosis_3",
+                                        "unlock": 1,
+                                        "state": 0,
+                                        "specializeLevel": 3,
+                                        "completeUpgradeTime": -1
+                                    }
+                                ],
+                                "currentEquip": null,
+                                "equip": {}
+                            },
+                            "3": {
+                                "instId": 3,
+                                "charId": "char_179_cgbird",
+                                "type": "NORMAL",
+                                "favorPoint": 25570,
+                                "potentialRank": 5,
+                                "mainSkillLvl": 7,
+                                "skin": "char_179_cgbird@witch#1",
+                                "level": 90,
+                                "exp": 0,
+                                "evolvePhase": 2,
+                                "defaultSkillIndex": 0,
+                                "skills": [
+                                    {
+                                        "skillId": "skcom_heal_up[3]",
+                                        "unlock": 1,
+                                        "state": 0,
+                                        "specializeLevel": 3,
+                                        "completeUpgradeTime": -1
+                                    },
+                                    {
+                                        "skillId": "skchr_cgbird_2",
+                                        "unlock": 1,
+                                        "state": 0,
+                                        "specializeLevel": 3,
+                                        "completeUpgradeTime": -1
+                                    },
+                                    {
+                                        "skillId": "skchr_cgbird_3",
+                                        "unlock": 1,
+                                        "state": 0,
+                                        "specializeLevel": 3,
+                                        "completeUpgradeTime": -1
+                                    }
+                                ],
+                                "currentEquip": "uniequip_002_cgbird",
+                                "equip": {
+                                    "uniequip_001_cgbird": {
+                                        "hide": 0,
+                                        "locked": 0,
+                                        "level": 1
+                                    },
+                                    "uniequip_002_cgbird": {
+                                        "hide": 0,
+                                        "locked": 0,
+                                        "level": 1
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "inventory": {
+                        "relic": {
+                            "r_0": {
+                                "index": "r_0",
+                                "id": "rogue_1_band_5",
+                                "count": 1,
+                                "ts": 1665271385
+                            }
+                        },
+                        "recruit": {
+                            "t_0": {
+                                "index": "t_0",
+                                "id": "rogue_1_recruit_ticket_warrior",
+                                "state": 2,
+                                "list": [],
+                                "result": {
+                                    "instId": 1,
+                                    "charId": "char_293_thorns",
+                                    "type": "NORMAL",
+                                    "favorPoint": 25570,
+                                    "potentialRank": 5,
+                                    "mainSkillLvl": 7,
+                                    "skin": "char_293_thorns@it#1",
+                                    "level": 90,
+                                    "exp": 0,
+                                    "evolvePhase": 2,
+                                    "defaultSkillIndex": 0,
+                                    "skills": [
+                                        {
+                                            "skillId": "skcom_atk_up[3]",
+                                            "unlock": 1,
+                                            "state": 0,
+                                            "specializeLevel": 3,
+                                            "completeUpgradeTime": -1
+                                        },
+                                        {
+                                            "skillId": "skchr_thorns_2",
+                                            "unlock": 1,
+                                            "state": 0,
+                                            "specializeLevel": 3,
+                                            "completeUpgradeTime": -1
+                                        },
+                                        {
+                                            "skillId": "skchr_thorns_3",
+                                            "unlock": 1,
+                                            "state": 0,
+                                            "specializeLevel": 3,
+                                            "completeUpgradeTime": -1
+                                        }
+                                    ],
+                                    "currentEquip": null,
+                                    "equip": {}
+                                },
+                                "ts": 1665271393,
+                                "from": "initial",
+                                "mustExtra": 0,
+                                "needAssist": true
+                            },
+                            "t_1": {
+                                "index": "t_1",
+                                "id": "rogue_1_recruit_ticket_support",
+                                "state": 2,
+                                "list": [],
+                                "result": {
+                                    "instId": 2,
+                                    "charId": "char_206_gnosis",
+                                    "type": "NORMAL",
+                                    "favorPoint": 25570,
+                                    "potentialRank": 5,
+                                    "mainSkillLvl": 7,
+                                    "skin": "char_206_gnosis#2",
+                                    "level": 90,
+                                    "exp": 0,
+                                    "evolvePhase": 2,
+                                    "defaultSkillIndex": 0,
+                                    "skills": [
+                                        {
+                                            "skillId": "skchr_gnosis_1",
+                                            "unlock": 1,
+                                            "state": 0,
+                                            "specializeLevel": 3,
+                                            "completeUpgradeTime": -1
+                                        },
+                                        {
+                                            "skillId": "skchr_gnosis_2",
+                                            "unlock": 1,
+                                            "state": 0,
+                                            "specializeLevel": 3,
+                                            "completeUpgradeTime": -1
+                                        },
+                                        {
+                                            "skillId": "skchr_gnosis_3",
+                                            "unlock": 1,
+                                            "state": 0,
+                                            "specializeLevel": 3,
+                                            "completeUpgradeTime": -1
+                                        }
+                                    ],
+                                    "currentEquip": null,
+                                    "equip": {}
+                                },
+                                "ts": 1665271393,
+                                "from": "initial",
+                                "mustExtra": 0,
+                                "needAssist": true
+                            },
+                            "t_2": {
+                                "index": "t_2",
+                                "id": "rogue_1_recruit_ticket_medic",
+                                "state": 2,
+                                "list": [],
+                                "result": {
+                                    "instId": 3,
+                                    "charId": "char_179_cgbird",
+                                    "type": "NORMAL",
+                                    "favorPoint": 25570,
+                                    "potentialRank": 5,
+                                    "mainSkillLvl": 7,
+                                    "skin": "char_179_cgbird@witch#1",
+                                    "level": 90,
+                                    "exp": 0,
+                                    "evolvePhase": 2,
+                                    "defaultSkillIndex": 0,
+                                    "skills": [
+                                        {
+                                            "skillId": "skcom_heal_up[3]",
+                                            "unlock": 1,
+                                            "state": 0,
+                                            "specializeLevel": 3,
+                                            "completeUpgradeTime": -1
+                                        },
+                                        {
+                                            "skillId": "skchr_cgbird_2",
+                                            "unlock": 1,
+                                            "state": 0,
+                                            "specializeLevel": 3,
+                                            "completeUpgradeTime": -1
+                                        },
+                                        {
+                                            "skillId": "skchr_cgbird_3",
+                                            "unlock": 1,
+                                            "state": 0,
+                                            "specializeLevel": 3,
+                                            "completeUpgradeTime": -1
+                                        }
+                                    ],
+                                    "currentEquip": "uniequip_002_cgbird",
+                                    "equip": {
+                                        "uniequip_001_cgbird": {
+                                            "hide": 0,
+                                            "locked": 0,
+                                            "level": 1
+                                        },
+                                        "uniequip_002_cgbird": {
+                                            "hide": 0,
+                                            "locked": 0,
+                                            "level": 1
+                                        }
+                                    }
+                                },
+                                "ts": 1665271393,
+                                "from": "initial",
+                                "mustExtra": 0,
+                                "needAssist": true
+                            }
+                        },
+                        "trap": null
+                    },
+                    "game": {
+                        "mode": "NORMAL",
+                        "predefined": null,
+                        "theme": "rogue_1",
+                        "outer": {
+                            "support": true
+                        },
+                        "start": 1665271379
+                    },
+                    "buff": {
+                        "tmpHP": 1,
+                        "capsule": null
+                    },
+                    "record": {
+                        "brief": null
+                    }
+                }
+            }
+        },
+        "deleted": {}
+    }
+}

@@ -1,0 +1,36 @@
+{
+    "charId": "char_350_surtr",
+    "skinId": "char_350_surtr#1",
+    "skills": [
+        {
+            "skillId": "skchr_surtr_1",
+            "unlock": 1,
+            "state": 0,
+            "specializeLevel": 3,
+            "completeUpgradeTime": -1
+        },
+        {
+            "skillId": "skchr_surtr_2",
+            "unlock": 1,
+            "state": 0,
+            "specializeLevel": 3,
+            "completeUpgradeTime": -1
+        },
+        {
+            "skillId": "skchr_surtr_3",
+            "unlock": 1,
+            "state": 0,
+            "specializeLevel": 3,
+            "completeUpgradeTime": -1
+        }
+    ],
+    "mainSkillLvl": 7,
+    "skillIndex": 2,
+    "evolvePhase": 2,
+    "favorPoint": 25570,
+    "potentialRank": 5,
+    "level": 80,
+    "crisisRecord": {},
+    "currentEquip": null,
+    "equip": {}
+}

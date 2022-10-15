@@ -1,0 +1,29 @@
+{
+    "InitialRecruitSet" : {
+        "recruit_group_1": [
+            "rogue_1_recruit_ticket_pioneer",
+            "rogue_1_recruit_ticket_sniper",
+            "rogue_1_recruit_ticket_special"
+        ],
+        "recruit_group_2": [
+            "rogue_1_recruit_ticket_tank",
+            "rogue_1_recruit_ticket_caster",
+            "rogue_1_recruit_ticket_sniper"
+        ],
+        "recruit_group_3": [
+            "rogue_1_recruit_ticket_warrior",
+            "rogue_1_recruit_ticket_support",
+            "rogue_1_recruit_ticket_medic"
+        ],
+        "recruit_group_random": [
+            "rogue_1_recruit_ticket_pioneer",
+            "rogue_1_recruit_ticket_warrior",
+            "rogue_1_recruit_ticket_tank",
+            "rogue_1_recruit_ticket_sniper",
+            "rogue_1_recruit_ticket_caster",
+            "rogue_1_recruit_ticket_support",
+            "rogue_1_recruit_ticket_medic",
+            "rogue_1_recruit_ticket_special"
+        ]
+    }
+}
