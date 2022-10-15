@@ -89,10 +89,14 @@ def syncData():
         else:
             level = edit_json["level"]
 
-        if edit_json["evolvePhase"] == -1:
-            evolvePhase = len(character_table[i]["phases"]) - 1
-        else:
-            evolvePhase = edit_json["evolvePhase"]
+        maxEvolvePhase = len(character_table[i]["phases"]) - 1
+        evolvePhase = maxEvolvePhase
+
+        if edit_json["evolvePhase"] != -1:
+            if edit_json["evolvePhase"] > maxEvolvePhase:
+                evolvePhase = maxEvolvePhase
+            else:
+                evolvePhase = edit_json["evolvePhase"]
 
         myCharList[int(cntInstId)] = {
             "instId": int(cntInstId),
@@ -113,8 +117,9 @@ def syncData():
         }
 
         # set to E2 art if available
-        if myCharList[int(cntInstId)]["evolvePhase"] == 2:
-            myCharList[int(cntInstId)]["skin"] = str(operatorKeys[cnt]) + "#2"
+        if operatorKeys[cnt] not in ["char_508_aguard", "char_509_acast", "char_510_amedic", "char_511_asnipe"]:
+            if myCharList[int(cntInstId)]["evolvePhase"] == 2:
+                myCharList[int(cntInstId)]["skin"] = str(operatorKeys[cnt]) + "#2"
 
         # set to seasonal skins [lastest release]
         if operatorKeys[cnt] in tempSkinTable.keys():
