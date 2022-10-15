@@ -1,5 +1,6 @@
 import json
 from time import time
+from copy import deepcopy
 
 import requests
 from flask import request
@@ -171,6 +172,19 @@ def syncData():
                             myCharList[int(cntInstId)]["skills"][skillIndex]["specializeLevel"] = skillValue
 
         cnt += 1
+        cntInstId += 1
+
+    dupeCharacters = edit_json["duplicateUnits"]
+    for dupeChar in dupeCharacters:
+
+        tempChar = {}
+        for char in myCharList:
+            if dupeChar == myCharList[char]["charId"]:
+                tempChar = deepcopy(myCharList[char])
+                break
+
+        tempChar["instId"] = int(cntInstId)
+        myCharList[int(cntInstId)] = tempChar
         cntInstId += 1
 
     playerData["user"]["troop"]["chars"] = myCharList

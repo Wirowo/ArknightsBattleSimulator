@@ -14,5 +14,6 @@
             "evolvePhase": 1,
             "skills": [1, 0]
         }
-    }
+    },
+    "duplicateUnits": ["char_377_gdglow", "char_377_gdglow", "char_377_gdglow", "char_377_gdglow", "char_377_gdglow", "char_377_gdglow"]
 }
