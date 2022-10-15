@@ -93,6 +93,9 @@ def syncData():
 
     dataSkin = requests.get('https://raw.githubusercontent.com/Kengxxiao/ArknightsGameData/master/en_US/gamedata/excel/skin_table.json').json()
     character_table = requests.get('https://raw.githubusercontent.com/Kengxxiao/ArknightsGameData/master/en_US/gamedata/excel/character_table.json').json()
+    patch_table = requests.get('https://raw.githubusercontent.com/Kengxxiao/ArknightsGameData/master/en_US/gamedata/excel/char_patch_table.json').json()["patchChars"]
+    equip_table = requests.get('https://raw.githubusercontent.com/Kengxxiao/ArknightsGameData/master/en_US/gamedata/excel/uniequip_table.json').json()
+    equip_keys = list(equip_table["charEquip"].keys())
 
     cnt = 0
     cntInstId = 1
@@ -147,8 +150,11 @@ def syncData():
             "exp": 0,
             "evolvePhase": evolvePhase,
             "defaultSkillIndex": 0,
-            "gainTime": 1591254258,
-            "skills": []
+            "gainTime": int(time()),
+            "skills": [],
+            "voiceLan": "JP",
+            "currentEquip": None,
+            "equip": {}
         }
 
         # set to E2 art if available
@@ -173,6 +179,20 @@ def syncData():
             if len(skill["levelUpCostCond"]) > 0:
                 myCharList[int(cntInstId)]["skills"][index]["specializeLevel"] = edit_json["skillsSpecializeLevel"]
 
+        # Add equips
+        if myCharList[int(cntInstId)]["charId"] in equip_keys:
+
+            for equip in equip_table["charEquip"][myCharList[int(cntInstId)]["charId"]]:
+                myCharList[int(cntInstId)]["equip"].update({
+                    equip: {
+                        "hide": 0,
+                        "locked": 0,
+                        "level": 1
+                    }
+                })
+
+            myCharList[int(cntInstId)]["currentEquip"] = equip_table["charEquip"][myCharList[int(cntInstId)]["charId"]][-1]
+
         # Dexnav
         playerData["user"]["dexNav"]["character"][operatorKeys[cnt]] = {
             "charInstId": cntInstId,
@@ -192,6 +212,99 @@ def syncData():
 
         cnt += 1
         cntInstId += 1
+
+    cnt = 0
+    patchOperatorKeys = list(patch_table.keys())
+    for i in patch_table:
+        if "char" not in patchOperatorKeys[cnt]:
+            cnt += 1
+            continue
+
+        # Add all operators
+        if edit_json["level"] == -1:
+            level = patch_table[i]["phases"][edit_json["evolvePhase"]]["maxLevel"]
+        else:
+            level = edit_json["level"]
+
+        if edit_json["evolvePhase"] == -1:
+            evolvePhase = len(patch_table[i]["phases"]) - 1
+        else:
+            evolvePhase = edit_json["evolvePhase"]
+
+        myCharList[int(cntInstId)] = {
+            "instId": int(cntInstId),
+            "charId": patchOperatorKeys[cnt],
+            "favorPoint": edit_json["favorPoint"],
+            "potentialRank": edit_json["potentialRank"],
+            "mainSkillLvl": edit_json["mainSkillLvl"],
+            "skin": str(patchOperatorKeys[cnt]) + "#1",
+            "level": level,
+            "exp": 0,
+            "evolvePhase": evolvePhase,
+            "defaultSkillIndex": 0,
+            "gainTime": int(time()),
+            "skills": [],
+            "voiceLan": "JP",
+            "currentEquip": None,
+            "equip": {}
+        }
+
+        # set to E2 art if available
+        if myCharList[int(cntInstId)]["evolvePhase"] == 2:
+            myCharList[int(cntInstId)]["skin"] = str(patchOperatorKeys[cnt]) + "#2"
+
+        # set to seasonal skins [lastest release]
+        if patchOperatorKeys[cnt] in tempSkinTable.keys():
+            myCharList[int(cntInstId)]["skin"] = tempSkinTable[patchOperatorKeys[cnt]]
+
+        # Add Skills
+        for index, skill in enumerate(patch_table[i]["skills"]):
+            myCharList[int(cntInstId)]["skills"].append({
+                "skillId": skill["skillId"],
+                "unlock": 1,
+                "state": 0,
+                "specializeLevel": 0,
+                "completeUpgradeTime": -1
+            })
+
+            # M3
+            if len(skill["levelUpCostCond"]) > 0:
+                myCharList[int(cntInstId)]["skills"][index]["specializeLevel"] = edit_json["skillsSpecializeLevel"]
+
+        # Add equips
+        if myCharList[int(cntInstId)]["charId"] in equip_keys:
+
+            for equip in equip_table["charEquip"][myCharList[int(cntInstId)]["charId"]]:
+                myCharList[int(cntInstId)]["equip"].update({
+                    equip: {
+                        "hide": 0,
+                        "locked": 0,
+                        "level": 1
+                    }
+                })
+
+            myCharList[int(cntInstId)]["currentEquip"] = equip_table["charEquip"][myCharList[int(cntInstId)]["charId"]][-1]
+
+        # Dexnav
+        playerData["user"]["dexNav"]["character"][patchOperatorKeys[cnt]] = {
+            "charInstId": cntInstId,
+            "count": 6
+        }
+
+        editList = edit_json["customUnitInfo"]
+
+        for char in editList:
+            if patchOperatorKeys[cnt] == char:
+                for key in editList[char]:
+                    if key != "skills":
+                        myCharList[int(cntInstId)][key] = editList[char][key]
+                    else:
+                        for skillIndex, skillValue in enumerate(editList[char]["skills"]):
+                            myCharList[int(cntInstId)]["skills"][skillIndex]["specializeLevel"] = skillValue
+
+        cnt += 1
+        cntInstId += 1
+
 
     playerData["user"]["troop"]["chars"] = myCharList
     playerData["user"]["troop"]["curCharInstId"] = cntInstId
