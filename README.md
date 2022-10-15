@@ -10,6 +10,8 @@ Simulate Arknights stages without costing sanity (works with guest account)
 
 Check `Features.md` to see what you can do with this.
 
+Discord Invite: [Link](https://discord.gg/bzMvwtzQ)
+
 
 ## How To
 
