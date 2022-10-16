@@ -12,6 +12,8 @@ Check `Features.md` to see what you can do with this.
 
 Discord Invite: [Link](https://discord.gg/bzMvwtzQ)
 
+## Known Issues
+- Amiya Guard isn't available yet since I haven't finished JT8-2 yet.
 
 ## How To
 
