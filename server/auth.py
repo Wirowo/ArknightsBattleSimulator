@@ -250,6 +250,11 @@ def syncData():
 
     playerData["user"]["checkIn"]["canCheckIn"] = 0
 
+    with open("data\\is2\\is2.json") as f:
+        is2_data = json.load(f)
+
+    playerData["user"]["rlv2"] = is2_data["playerDataDelta"]["modified"]["rlv2"]
+
     with open("data\\userData.json", "w") as f:
         json.dump(playerData, f, indent=4)
     

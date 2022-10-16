@@ -42,7 +42,10 @@ app.add_url_rule('/rlv2/selectChoice', methods=['POST'], view_func=is2.selectCho
 app.add_url_rule('/rlv2/chooseInitialRecruitSet', methods=['POST'], view_func=is2.chooseInitialRecruitSet)
 app.add_url_rule('/rlv2/activeRecruitTicket', methods=['POST'], view_func=is2.activeRecruitTicket)
 app.add_url_rule('/rlv2/recruitChar', methods=['POST'], view_func=is2.recruitChar)
+app.add_url_rule('/rlv2/closeRecruitTicket', methods=['POST'], view_func=is2.closeRecruitTicket)
 app.add_url_rule('/rlv2/finishEvent', methods=['POST'], view_func=is2.finishEvent)
+app.add_url_rule('/rlv2/moveAndBattleStart', methods=['POST'], view_func=is2.moveAndBattleStart)
+
 
 # Misc
 app.add_url_rule('/charBuild/batchSetCharVoiceLan', methods=['POST'], view_func=misc.batchSetCharVoiceLan)

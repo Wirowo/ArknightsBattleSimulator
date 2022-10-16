@@ -196,7 +196,7 @@ def createGame():
         }
     }
 
-    with open("data\\is2.json", "w") as f:
+    with open("data\\is2\\is2.json", "w") as f:
         json.dump(data, f, indent=4)
 
     return data
@@ -207,7 +207,7 @@ def chooseInitialRelic():
     data = request.data
     chosenRelic = request.get_json()
 
-    with open("data\\is2.json") as f:
+    with open("data\\is2\\is2.json") as f:
         is2_data = json.load(f)
 
     initRelic = is2_data["playerDataDelta"]["modified"]["rlv2"]["current"]["player"]["pending"].pop(0)
@@ -224,7 +224,7 @@ def chooseInitialRelic():
         }
     })
 
-    with open("config\\is2.json", "w") as f:
+    with open("data\\is2\\is2.json", "w") as f:
         json.dump(is2_data, f, indent=4)
 
     return is2_data
@@ -235,13 +235,13 @@ def selectChoice():
     data = request.data
     chosenChoice = request.get_json()["choice"]
 
-    with open("config\\is2.json") as f:
+    with open("data\\is2\\is2.json") as f:
         is2_data = json.load(f)
 
     choices = is2_data["playerDataDelta"]["modified"]["rlv2"]["current"]["player"]["pending"].pop(0)
     if choices["type"] == "GAME_INIT_SUPPORT":
 
-        with open("is2\\startbuff.json") as f:
+        with open("data\\is2\\startbuff.json") as f:
             startbuffs = json.load(f)
 
         buffChosen = startbuffs[chosenChoice]
@@ -271,7 +271,7 @@ def selectChoice():
                 }
             })
 
-    with open("config\\is2.json", "w") as f:
+    with open("data\\is2\\is2.json", "w") as f:
         json.dump(is2_data, f, indent=4)
 
     if chosenChoice == "choice_startbuff_6":
@@ -293,10 +293,10 @@ def chooseInitialRecruitSet():
     data = request.data
     chosenRecruit = request.get_json()["select"]
 
-    with open("is2\\recruit.json") as f:
+    with open("data\\is2\\recruit.json") as f:
         recruitData = json.load(f)
 
-    with open("config\\is2.json") as f:
+    with open("data\\is2\\is2.json") as f:
         is2_data = json.load(f)
 
     is2_data["playerDataDelta"]["modified"]["rlv2"]["current"]["player"]["pending"].pop(0)
@@ -330,7 +330,7 @@ def chooseInitialRecruitSet():
 
     is2_data["playerDataDelta"]["modified"]["rlv2"]["current"]["player"]["pending"][0]["content"]["initRecruit"]["tickets"] = list(is2_data["playerDataDelta"]["modified"]["rlv2"]["current"]["inventory"]["recruit"].keys())
 
-    with open("config\\is2.json", "w") as f:
+    with open("data\\is2\\is2.json", "w") as f:
         json.dump(is2_data, f, indent=4)
 
     return is2_data
@@ -341,10 +341,10 @@ def activeRecruitTicket():
     data = request.data
     chosenRecruit = request.get_json()["id"]
 
-    with open("config\\is2.json") as f:
+    with open("data\\is2\\is2.json") as f:
         is2_data = json.load(f)
 
-    with open("config\\userData.json") as f:
+    with open("data\\userData.json") as f:
         userData = json.load(f)["user"]["troop"]["chars"]
 
     chosenTicket = is2_data["playerDataDelta"]["modified"]["rlv2"]["current"]["inventory"]["recruit"][chosenRecruit]["id"]
@@ -396,7 +396,7 @@ def activeRecruitTicket():
         }
     })
 
-    with open("config\\is2.json", "w") as f:
+    with open("data\\is2\\is2.json", "w") as f:
         json.dump(is2_data, f, indent=4)
 
     return is2_data
@@ -407,7 +407,7 @@ def recruitChar():
     data = request.data
     chosenRecruit = request.get_json()
 
-    with open("config\\is2.json") as f:
+    with open("data\\is2\\is2.json") as f:
         is2_data = json.load(f)
 
     chosenChar = is2_data["playerDataDelta"]["modified"]["rlv2"]["current"]["inventory"]["recruit"][chosenRecruit["ticketIndex"]]["list"][int(chosenRecruit["optionId"])]
@@ -424,7 +424,7 @@ def recruitChar():
     is2_data["playerDataDelta"]["modified"]["rlv2"]["current"]["inventory"]["recruit"][chosenRecruit["ticketIndex"]]["state"] = 2
     is2_data["playerDataDelta"]["modified"]["rlv2"]["current"]["inventory"]["recruit"][chosenRecruit["ticketIndex"]]["list"] = []
 
-    with open("config\\is2.json", "w") as f:
+    with open("data\\is2\\is2.json", "w") as f:
         json.dump(is2_data, f, indent=4)
 
     is2_data.update({
@@ -435,11 +435,29 @@ def recruitChar():
     return is2_data
 
 
+def closeRecruitTicket():
+
+    data = request.data
+    chosenRecruit = request.get_json()
+
+    with open("data\\is2\\is2.json") as f:
+        is2_data = json.load(f)
+    
+    is2_data["playerDataDelta"]["modified"]["rlv2"]["current"]["player"]["pending"].pop(0)
+    is2_data["playerDataDelta"]["modified"]["rlv2"]["current"]["inventory"]["recruit"][chosenRecruit["id"]]["state"] = 2
+    is2_data["playerDataDelta"]["modified"]["rlv2"]["current"]["inventory"]["recruit"][chosenRecruit["id"]]["list"] = []
+
+    with open("data\\is2\\is2.json", "w") as f:
+        json.dump(is2_data, f, indent=4)
+
+    return is2_data
+
+
 def finishEvent():
 
     data = request.data
 
-    with open("config\\is2.json") as f:
+    with open("data\\is2\\is2.json") as f:
         is2_data = json.load(f)
 
     is2_data["playerDataDelta"]["modified"]["rlv2"]["current"]["player"]["state"] = "WAIT_MOVE"
@@ -464,17 +482,10 @@ def finishEvent():
                             {
                                 "x": 1,
                                 "y": 0,
-                            },
-                            {
-                                "x": 1,
-                                "y": 1,
-                            },
-                            {
-                                "x": 1,
-                                "y": 2,
                             }
                         ],
-                        "type": 32
+                        "type": 1,
+                        "stage": "ro1_b_7"
                     },
                     "100": {
                         "index": "100",
@@ -482,190 +493,149 @@ def finishEvent():
                             "x": 1,
                             "y": 0
                         },
-                        "next": [
-                            {
-                                "x": 2,
-                                "y": 0,
-                            },
-                            {
-                                "x": 2,
-                                "y": 1,
-                            },
-                            {
-                                "x": 2,
-                                "y": 2,
-                            }
-                        ],
-                        "type": 32
-                    },
-                    "101": {
-                        "index": "101",
-                        "pos": {
-                            "x": 1,
-                            "y": 1
-                        },
-                        "next": [
-                            {
-                                "x": 2,
-                                "y": 0,
-                            },
-                            {
-                                "x": 2,
-                                "y": 1,
-                            },
-                            {
-                                "x": 2,
-                                "y": 2,
-                            }
-                        ],
-                        "type": 32
-                    },
-                    "102": {
-                        "index": "102",
-                        "pos": {
-                            "x": 1,
-                            "y": 2
-                        },
-                        "next": [
-                            {
-                                "x": 2,
-                                "y": 0,
-                            },
-                            {
-                                "x": 2,
-                                "y": 1,
-                            },
-                            {
-                                "x": 2,
-                                "y": 2,
-                            }
-                        ],
-                        "type": 32
-                    },
-                    "200": {
-                        "index": "200",
-                        "pos": {
-                            "x": 2,
-                            "y": 0
-                        },
-                        "next": [
-                            {
-                                "x": 3,
-                                "y": 0,
-                            },
-                            {
-                                "x": 3,
-                                "y": 1,
-                            },
-                            {
-                                "x": 3,
-                                "y": 2,
-                            }
-                        ],
-                        "type": 32
-                    },
-                    "201": {
-                        "index": "201",
-                        "pos": {
-                            "x": 2,
-                            "y": 1
-                        },
-                        "next": [
-                            {
-                                "x": 3,
-                                "y": 0,
-                            },
-                            {
-                                "x": 3,
-                                "y": 1,
-                            },
-                            {
-                                "x": 3,
-                                "y": 2,
-                            }
-                        ],
-                        "type": 32
-                    },
-                    "202": {
-                        "index": "202",
-                        "pos": {
-                            "x": 2,
-                            "y": 2
-                        },
-                        "next": [
-                            {
-                                "x": 3,
-                                "y": 0,
-                            },
-                            {
-                                "x": 3,
-                                "y": 1,
-                            },
-                            {
-                                "x": 3,
-                                "y": 2,
-                            }
-                        ],
-                        "type": 32
-                    },
-                    "300": {
-                        "index": "300",
-                        "pos": {
-                            "x": 3,
-                            "y": 0
-                        },
-                        "next": [
-                            {
-                                "x": 4,
-                                "y": 0,
-                            }
-                        ],
-                        "type": 32
-                    },
-                    "301": {
-                        "index": "301",
-                        "pos": {
-                            "x": 3,
-                            "y": 1
-                        },
-                        "next": [
-                            {
-                                "x": 4,
-                                "y": 0,
-                            }
-                        ],
-                        "type": 32
-                    },
-                    "302": {
-                        "index": "302",
-                        "pos": {
-                            "x": 3,
-                            "y": 2
-                        },
-                        "next": [
-                            {
-                                "x": 4,
-                                "y": 0,
-                            }
-                        ],
-                        "type": 32
-                    },
-                    "400": {
-                        "index": "400",
-                        "pos": {
-                            "x": 4,
-                            "y": 0
-                        },
                         "next": [],
                         "type": 32,
                         "zone_end": True
-                    },
+                    }
                 }
             }
         }
     }
 
-    with open("config\\is2.json", "w") as f:
+    with open("data\\is2\\is2.json", "w") as f:
         json.dump(is2_data, f, indent=4)
 
     return is2_data
+
+
+def moveAndBattleStart():
+
+    data = request.data
+    request_data = request.get_json()
+
+    with open("data\\is2\\is2.json") as f:
+        is2_data = json.load(f)
+
+    is2_data["battleId"] = "1234567890-abcd-abcd-1234567890"
+    is2_data["playerDataDelta"]["modified"]["rlv2"]["current"]["player"]["state"] = "PENDING"
+    is2_data["playerDataDelta"]["modified"]["rlv2"]["current"]["player"]["cursor"]["position"] = request_data["to"]
+    is2_data["playerDataDelta"]["modified"]["rlv2"]["current"]["player"]["trace"].append({
+        "zone": is2_data["playerDataDelta"]["modified"]["rlv2"]["current"]["player"]["cursor"]["zone"],
+        "position": request_data["to"]
+    })
+    is2_data["playerDataDelta"]["modified"]["rlv2"]["current"]["player"]["pending"].append({
+        "index": "e_1",
+        "type": "BATTLE",
+        "content": {
+            "battle": {
+                "state": 1,
+                "chestCnt": 1,
+                "goldTrapCnt": 1,
+                "tmpChar": [],
+                "unKeepBuff": [
+                {
+                    "key": "char_attribute_mul",
+                    "blackboard": [
+                        {
+                            "key": "selector.profession",
+                            "valueStr": "warrior|sniper|tank|medic|support|caster|special|pioneer"
+                        },
+                        {
+                            "key": "respawn_time",
+                            "value": -1
+                        },
+                        {
+                        "key": "cost",
+                        "value": -50.0
+                        }
+                    ]
+                },
+                {
+                    "key": "char_attribute_add",
+                    "blackboard": [
+                        {
+                            "key": "attack_speed",
+                            "value": 500
+                        },
+                        {
+                            "key": "stack_by_res",
+                            "valueStr": "rogue_1_gold"
+                        },
+                        {
+                            "key": "stack_by_res_cnt",
+                            "value": 0
+                        }
+                    ]
+                },
+                {
+                    "key": "global_buff_normal",
+                    "blackboard": [
+                        {
+                            "key": "key",
+                            "valueStr": "damage_resistance[filter_tag]"
+                        },
+                        {
+                            "key": "tag",
+                            "valueStr": "originiumartscraft"
+                        },
+                        {
+                            "key": "damage_resistance",
+                            "value": 1.0
+                        },
+                        {
+                            "key": "selector.profession",
+                            "valueStr": "warrior|sniper|tank|medic|support|caster|special|pioneer"
+                        }
+                    ]
+                },
+                {
+                    "key": "level_init_cost_add",
+                    "blackboard": [
+                        {
+                            "key": "value",
+                            "value": 99.0
+                        }
+                    ]
+                },
+                {
+                    "key": "global_buff_stack",
+                    "blackboard": [
+                        {
+                            "key": "key",
+                            "valueStr": "modify_sp[born]"
+                        },
+                        {
+                            "key": "selector.profession",
+                            "valueStr": "caster"
+                        },
+                        {
+                            "key": "sp",
+                            "value": 50.0
+                        }
+                    ]
+                }
+                ]
+            }
+        }
+    })
+
+    with open("data\\is2\\is2.json", "w") as f:
+        json.dump(is2_data, f, indent=4)
+
+    return is2_data
+
+
+# def battleFinish():
+
+#     data = request.data
+#     request_data = request.get_json()
+
+#     with open("data\\is2\\is2.json") as f:
+#         is2_data = json.load(f)
+
+#     {"playerDataDelta":{"modified":{"rlv2":{
+#         "current":{"player":{
+#             "state":"PENDING","property":{
+#                 "exp":0,"level":2,"hp":26,"gold":57,"capacity":6,"population":{"cost":15,"max":24},"conPerfectBattle":1
+#             },
+#             "cursor":{"zone":1,"position":{"x":0,"y":0}},"trace":[{"zone":1,"position":{"x":0,"y":0}}],"pending":[{"index":"e_8","type":"BATTLE_REWARD","content":{"battleReward":{"earn":{"damage":0,"hp":0,"exp":10,"populationMax":4,"squadCapacity":0},"rewards":[{"index":0,"items":[{"sub":0,"id":"rogue_1_gold","count":3}],"done":0},{"index":1,"items":[{"sub":0,"id":"rogue_1_recruit_ticket_medic","count":1}],"done":0}],"show":"2"}}}],"status":{"bankPut":0},"toEnding":"ro_ending_1","chgEnding":false,"innerMission":[{"tmpl":"NODE_ENTER","progress":[0,6]}]},"record":{"brief":null},"buff":{"tmpHP":0,"capsule":null}}}},"deleted":{}}}
