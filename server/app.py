@@ -34,6 +34,8 @@ app.add_url_rule('/charBuild/setEquipment', methods=['POST'], view_func=char.set
 
 # Crisis
 app.add_url_rule('/crisis/getInfo', methods=['POST'], view_func=crisis.getCrisisInfo)
+app.add_url_rule('/crisis/battleStart', methods=['POST'], view_func=crisis.crisisBattleStart)
+app.add_url_rule('/crisis/battleFinish', methods=['POST'], view_func=crisis.crisisBattleFinish)
 
 # IS2
 app.add_url_rule('/rlv2/createGame', methods=['POST'], view_func=is2.createGame)

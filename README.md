@@ -21,6 +21,21 @@ Discord Invite: [Link](https://discord.gg/bzMvwtzQ)
 4. Run `start.bat` in the cloned folder.
 5. Open Arknights.
 
+## Setting up Contengency Contract (Complete till step 4 in the ## How To first) (Credits to @3tnt on discord)
+
+1. Download `frida-server-16.0.1-android-x86_64.xz` from [here](https://github.com/frida/frida/releases).
+2. Extract and rename the file to `frida-server`.
+3. Enable root on your emulator (Currently tested: LDPlayer, MuMu Player).
+4. Connect to your emulator using adb (Google the method for your emulator).
+5. Copy the `frida-server` from step 2 using `adb push frida-server /data/local/tmp/`.
+6. Give the file run permission `adb shell "chmod 755 /data/local/tmp/frida-server"`.
+7. Run the file `adb shell "/data/local/tmp/frida-server"`.
+8. Check whether frida works or not using `frida-ps -U`. (If it says "not recognized", type in `env\scripts\activate.bat` first and try again.)
+9. Run `py frida.py` after you opened the game.
+
+## Changing contengency contract season
+Change the value in `config\crisisConfig.json` to whatever you want. The avaiable seasons are in `data\crisis`.
+
 ## Customizing indivual operators level, potentials, skill ranks and others
 Customize each operator indivually by adding new info in `customUnitInfo` key in `edit.json`. You can find <operator_key_name> from [here](https://raw.githubusercontent.com/Kengxxiao/ArknightsGameData/master/en_US/gamedata/excel/character_table.json). By default, all characters will have max level, max potentials, max mastery.
 
